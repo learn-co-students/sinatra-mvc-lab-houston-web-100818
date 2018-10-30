@@ -34,7 +34,7 @@ class PigLatinizer
         when false
           word[3..-1] + word[0..2] + "ay"
         end
-        
+
       end
 
     end
@@ -42,10 +42,9 @@ class PigLatinizer
   end
 
   def piglatinize(words)
-    words = words.split(" ").map do | word |
+    words.split(" ").map do | word |
       piglatinize_word(word)
-    end
-    words.join(" ")
+    end.join(" ")
   end
 
 end
