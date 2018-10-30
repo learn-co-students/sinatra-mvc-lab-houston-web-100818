@@ -8,35 +8,15 @@ class PigLatinizer
   end
 
   def piglatinize_word(word)
-    first_letter = word[0]
-    second_letter = word[1]
-    third_letter = word[2]
+    first_vowel_index = word.split('').find_index do | letter |
+      vowel?(letter)
+    end
 
-    case vowel?(first_letter)
-
-    when true
+    case first_vowel_index
+    when 0
       word + "way"
-
-    when false
-
-      case vowel?(second_letter)
-
-      when true
-        word[1..-1] + word[0] + "ay"
-
-      when false
-
-        case vowel?(third_letter)
-
-        when true
-          word[2..-1] + word[0..1] + "ay"
-
-        when false
-          word[3..-1] + word[0..2] + "ay"
-        end
-
-      end
-
+    else
+      word[first_vowel_index..-1] + word[0...first_vowel_index] + "ay"
     end
 
   end
