@@ -7,16 +7,19 @@ class PigLatinizer
     !letter.scan(/[AEOUIaeoui]/).empty?
   end
 
-  def piglatinize_word(word)
-    first_vowel_index = word.split('').find_index do | letter |
+  def first_vowel_index(word)
+    word.split('').find_index do | letter |
       vowel?(letter)
     end
+  end
 
-    case first_vowel_index
+  def piglatinize_word(word)
+    index = first_vowel_index(word)
+    case index
     when 0
       word + "way"
     else
-      word[first_vowel_index..-1] + word[0...first_vowel_index] + "ay"
+      word[index..-1] + word[0...index] + "ay"
     end
 
   end
