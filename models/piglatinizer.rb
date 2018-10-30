@@ -1,8 +1,5 @@
 class PigLatinizer
 
-  def initialize
-  end
-
   def vowel?(letter)
     !letter.scan(/[AEOUIaeoui]/).empty?
   end
@@ -14,12 +11,12 @@ class PigLatinizer
   end
 
   def piglatinize_word(word)
-    index = first_vowel_index(word)
-    case index
+    first_vowel = first_vowel_index(word)
+    case first_vowel
     when 0
       word + "way"
     else
-      word[index..-1] + word[0...index] + "ay"
+      word[first_vowel..-1] + word[0...first_vowel] + "ay"
     end
 
   end
